@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BOT CONTROL PANEL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ambient"></div>
+<header class="topbar">
+  <button class="hamb" id="hamb">☰</button>
+  <div class="logo">BOT CONTROL<br><b>PANEL</b></div>
+  <div class="top-actions"><button>🪙 <span id="coins">0</span></button><button id="bell">🔔</button></div>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <div class="side-title">CONTROL PANEL</div>
+  <button class="nav active" data-page="home">⌂ Dashboard</button>
+  <button class="nav" data-page="store">🎮 Top-Up Store</button>
+  <button class="nav" data-page="orders">📦 My Orders</button>
+  <button class="nav" data-page="profile">👤 Profile</button>
+  <button class="nav" data-page="admin">⚙ Admin Panel</button>
+</aside>
+
+<main class="main">
+<section class="page active" id="home">
+  <div class="hero">
+    <div><small>WELCOME BACK</small><h1>FREE FIRE<br><span>CONTROL CENTER</span></h1><p>Fast, clean and responsive gaming dashboard.</p></div>
+    <div class="hero-orb">FF</div>
+  </div>
+  <div class="stats">
+    <div><small>ORDERS</small><strong id="statOrders">0</strong></div>
+    <div><small>COMPLETED</small><strong id="statDone">0</strong></div>
+    <div><small>BALANCE</small><strong>₹<span id="statBalance">0</span></strong></div>
+  </div>
+  <div class="section-head"><h2>Quick Actions</h2></div>
+  <div class="quick">
+    <button data-go="store">🎮<b>Top-Up Store</b><span>Choose a package</span></button>
+    <button data-go="orders">📦<b>Order History</b><span>View your requests</span></button>
+    <button data-go="profile">👤<b>Profile</b><span>Account settings</span></button>
+  </div>
+</section>
+
+<section class="page" id="store">
+  <div class="page-title"><small>STORE</small><h1>FREE FIRE TOP-UP STORE</h1></div>
+  <div class="card">
+    <label>PLAYER UID</label>
+    <input id="uid" inputmode="numeric" maxlength="20" placeholder="Enter Player UID">
+    <label>PACKAGE</label>
+    <select id="package">
+      <option value="200">Monthly VIP — ₹200</option>
+      <option value="399">Weekly VIP — ₹399</option>
+      <option value="549">Diamond Pack — ₹549</option>
+      <option value="699">Premium Pack — ₹699</option>
+      <option value="1299">Elite Pack — ₹1299</option>
+    </select>
+    <div class="summary"><span>Selected amount</span><b id="amount">₹200</b></div>
+    <button class="primary" id="pay">GENERATE PAYMENT QR</button>
+    <p class="tiny">Demo checkout. Connect a legitimate payment provider before accepting real payments.</p>
+  </div>
+  <div class="packages">
+    <div><b>₹200</b><span>Monthly VIP</span></div><div><b>₹399</b><span>Weekly VIP</span></div>
+    <div><b>₹549</b><span>Diamond Pack</span></div><div><b>₹1299</b><span>Elite Pack</span></div>
+  </div>
+</section>
+
+<section class="page" id="orders">
+  <div class="page-title"><small>HISTORY</small><h1>MY ORDERS</h1></div>
+  <div id="orderList" class="orders"></div>
+</section>
+
+<section class="page" id="profile">
+  <div class="page-title"><small>ACCOUNT</small><h1>PROFILE</h1></div>
+  <div class="card profile-card">
+    <div class="avatar">MR</div><h2>Player Account</h2><p>Demo profile</p>
+    <label>DISPLAY NAME</label><input id="displayName" placeholder="Your name">
+    <button class="primary" id="saveProfile">SAVE PROFILE</button>
+  </div>
+</section>
+
+<section class="page" id="admin">
+  <div class="page-title"><small>ADMIN</small><h1>ADMIN PANEL</h1></div>
+  <div class="admin-grid">
+    <div><small>TOTAL ORDERS</small><strong id="aOrders">0</strong></div>
+    <div><small>PENDING</small><strong id="aPending">0</strong></div>
+    <div><small>COMPLETED</small><strong id="aCompleted">0</strong></div>
+    <div><small>REVENUE (DEMO)</small><strong id="aRevenue">₹0</strong></div>
+  </div>
+  <div class="card"><h2>Recent Requests</h2><div id="adminOrders"></div></div>
+</section>
+</main>
+
+<div class="modal hidden" id="modal">
+ <div class="modal-box">
+  <button class="close" id="close">×</button>
+  <h2>PAYMENT QR</h2><img class="realqr" id="realqr" alt="UPI payment QR">
+  <div class="receipt"><span>PLAYER UID</span><b id="mUid"></b><span>PACKAGE</span><b id="mPkg"></b><span>AMOUNT</span><b id="mAmt"></b></div>
+  <button class="primary" id="confirm">CREATE DEMO ORDER</button>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
